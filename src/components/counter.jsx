@@ -4,7 +4,7 @@ import { returnStatement } from "@babel/types";
 
 class Counter extends React.Component {
   state = {
-    count: 0
+    count: 5
     //imageURL: "https:/picsum.photos/200"
   };
   render() {
@@ -12,16 +12,23 @@ class Counter extends React.Component {
       <React.Fragment>
         <div>
           <span
+            className={this.getBadgeClasses()}
             style={{ fontSize: 10, fontWeight: "bold" }}
-            className="badge badge-primary m-2" //CSS?!?
           >
-            {" "}
             {this.formatCount()}
           </span>
           <button className="btn btn-secondary btn-sm"> Increment </button>
         </div>
       </React.Fragment>
     );
+  }
+
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-"; //HERE M-2 IS FOR MARGIN AND BADGE IS SOME CSS ...SORT OF
+    classes += this.state.count === 0 ? "warning" : "primary";
+    return classes;
+    /* CONDITIONAL EXPRESSION TO CHECK IF THE 
+    /*VALUE IS ZERO THEN WARNING  (THIS WILL CHANGE COLOUR TO YELLOW ELSE BLUE)   */
   }
 
   formatCount() {
