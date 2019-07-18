@@ -4,15 +4,15 @@ import { returnStatement } from "@babel/types";
 
 class Counter extends React.Component {
   state = {
-    count: 3 ,
-    imageURL: "https:/picsum.photos/200"
+    count: 0 ,
+    //imageURL: "https:/picsum.photos/200"
   };
   render() {
     return (
       <React.Fragment>
         <div>
-          <img src={this.state.imageURL} alt=""/>
-          <h1>{this.formatCount()}</h1>
+          <span className = "badge badge-primary m-2"> {this.formatCount()}</span> 
+          
           <button> Increment </button>
         </div>
       </React.Fragment>
@@ -20,7 +20,7 @@ class Counter extends React.Component {
   }
 
   formatCount() {
-    const { count } = this.state;
+    const { count } = this.state;  //DESTRUCTOR
     return count === 0 ? "Zero" : count;
   }
 }
