@@ -3,22 +3,23 @@ import { Component } from "react";
 import { returnStatement } from "@babel/types";
 
 class Counter extends React.Component {
-    state = {
-        count : 3
-    };
+  state = {
+    count: 3
+  };
   render() {
     return (
       <React.Fragment>
-        <h1>{this.formatCount()}</h1>
-        <button> Increment </button>
+        <div>
+          <h1>{this.formatCount()}</h1>
+          <button> Increment </button>
+        </div>
       </React.Fragment>
     );
   }
 
-
-formatCount() {
+  formatCount() {
     const { count } = this.state;
-return count === 0 ? 'Zero' : count;
-    }
-}   
+    return count === 0 ? "Zero" : count;
+  }
+}
 export default Counter;
