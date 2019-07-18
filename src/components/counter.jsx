@@ -4,12 +4,14 @@ import { returnStatement } from "@babel/types";
 
 class Counter extends React.Component {
   state = {
-    count: 3
+    count: 3 ,
+    imageURL: "https:/picsum.photos/200"
   };
   render() {
     return (
       <React.Fragment>
         <div>
+          <img src={this.state.imageURL} alt=""/>
           <h1>{this.formatCount()}</h1>
           <button> Increment </button>
         </div>
