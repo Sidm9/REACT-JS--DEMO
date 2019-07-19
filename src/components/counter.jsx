@@ -1,13 +1,18 @@
 import * as React from "react";
+//eslint-disable-next-line
 import { Component } from "react";
-import { returnStatement } from "@babel/types";
+//eslint-disable-next-line
+import { returnStatement, throwStatement } from "@babel/types";
 
 class Counter extends React.Component {
   state = {
-    count: 5
+    count: -2
     //imageURL: "https:/picsum.photos/200"
   };
-  handleIncrement = () => {
+
+  // BINDING EVENT HANDLERS...
+  handleIncrement = product => {
+    console.log(product);
     this.setState({ count: this.state.count + 1 });
   };
   render() {
@@ -21,12 +26,17 @@ class Counter extends React.Component {
             {this.formatCount()}
           </span>
 
-          <button onClick = {this.handleIncrement} className="btn btn-secondary btn-sm"> Increment </button>
+          <button
+            onClick={ () => this.handleIncrement(this.state.count)}
+            className="btn btn-secondary btn-sm"
+          >
+            {" "}
+            Increment{" "}
+          </button>
         </div>
       </React.Fragment>
     );
   }
-
   getBadgeClasses() {
     let classes = "badge m-2 badge-"; //HERE M-2 IS FOR MARGIN AND BADGE IS SOME CSS ...SORT OF
     classes += this.state.count === 0 ? "warning" : "primary";
