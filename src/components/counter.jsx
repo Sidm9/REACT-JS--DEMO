@@ -4,29 +4,40 @@ import { returnStatement } from "@babel/types";
 
 class Counter extends React.Component {
   state = {
-    count: 5,
-    tag: []
+    count: 5
     //imageURL: "https:/picsum.photos/200"
   };
-
-  renderTags() {
-    if (this.state.tag.length === 0) return <p>THERE ARE NO TAGS</p>;
-    return (
-      <ul>
-        <li>
-          {this.state.tag.map(tag => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </li>
-      </ul>
-    );
-  }
+  handleIncrement = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
   render() {
     return (
       <React.Fragment>
-        <div>{this.renderTags()}</div>
+        <div>
+          <span
+            className={this.getBadgeClasses()}
+            style={{ fontSize: 10, fontWeight: "bold" }}
+          >
+            {this.formatCount()}
+          </span>
+
+          <button onClick = {this.handleIncrement} className="btn btn-secondary btn-sm"> Increment </button>
+        </div>
       </React.Fragment>
     );
+  }
+
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-"; //HERE M-2 IS FOR MARGIN AND BADGE IS SOME CSS ...SORT OF
+    classes += this.state.count === 0 ? "warning" : "primary";
+    return classes;
+    /* CONDITIONAL EXPRESSION TO CHECK IF THE 
+    /*VALUE IS ZERO THEN WARNING  (THIS WILL CHANGE COLOUR TO YELLOW ELSE BLUE)   */
+  }
+
+  formatCount() {
+    const { count } = this.state; //DESTRUCTOR
+    return count === 0 ? "Zero" : count;
   }
 }
 export default Counter;
