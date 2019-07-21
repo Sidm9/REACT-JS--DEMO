@@ -5,7 +5,9 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "/Users/SIDDHARTH/Desktop/REACT/counter-app/src/bootstrap.css";
+// eslint-disable-next-line
 import Counter from "./components/counter";
-ReactDOM.render(<Counter />, document.getElementById("root"));
+import Counters from "./components/counters"
+ReactDOM.render(<Counters />, document.getElementById("root"));
 
 serviceWorker.register();
