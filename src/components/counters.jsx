@@ -1,15 +1,24 @@
 import React, { Component } from "react";
+// eslint-disable-next-line
 import Counter from "./counter";
 class Counters extends Component {
-  state = {};
+  state = {
+    counters: [
+      { id: 1, value: 0 },
+      { id: 2, value: 0 },
+      { id: 3, value: 0 },
+      { id: 4, value: 0 }
+    ]
+  };
   render() {
-      // MULTIPLE COUNTER CLASS ISOLATED FROM EACH OTHER
+    // MULTIPLE COUNTER CLASS ISOLATED FROM EACH OTHER
     return (
       <div>
-        <Counter />
-        <Counter />
-        <Counter />
-        <Counter />
+        {this.state.counters.map(
+          /*LINKING TO THE CLASS*/ (counter) /*MODULE*/ => (
+            <Counter /*CLASS*/ key={counter.id} />
+          )
+        )}
       </div>
     );
   }
